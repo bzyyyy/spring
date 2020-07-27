@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	schema: 规范
+	xxx.xsd
+	xml schema defination
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+						
+<!-- 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+-->
+	
+	<!-- 单例：单实例‘ -->
+	<!-- 要工厂生产的对象 -->
+	<bean id="userDao" class="com.spring01.dao.impl.UserDaoImpl"></bean>
+	<bean id="userDao2" class="com.spring01.dao.impl.MyUserDao"></bean>
+	<bean id="userService" class="com.spring01.service.impl.UserServiceImpl" autowire="byName">
+		<!-- 这里的ref对应的<bean></bean>中的id,name对应bean中配置实现类的属性 -->
+		<!-- userDao属性赋值，值是id为userDao的一个bean 
+			注入：属性值   依赖关系
+			依赖注入
+		-->
+		<!-- <property name="userDao" ref="userDao2" /> -->
+	</bean>
+		
+	<bean id="addr" class="com.spring02.entity.Address">
+		<property name="id" value="1"></property>
+		<property name="city" value="bj"></property>
+	</bean>
+	
+	<!-- Set注入 -->
+	<bean id="user" class="com.spring02.entity.User">
+		<property name="id" value="10"></property>
+		<property name="password" value="123"></property>
+		<property name="sex" value="male"></property>
+		<property name="age" value="19"></property>
+		<property name="bornDate" value="2020/12/12 12:20:20"></property>
+		
+		<!-- 数组 -->
+		<property name="hobbys">
+			<array>
+				<value>football</value>
+				<value>basketball</value>
+			</array>
+		</property>
+		
+		<!-- 集合 -->
+		<property name="names">
+			<list>
+				<value>tom</value>
+				<value>jack</value>
+			</list>
+		</property>
+	
+		<!-- Set -->
+		<property name="phones">
+			<set>
+				<value>18725671629</value>
+				<value>13707477236</value>
+			</set>
+		</property>
+		
+		<!-- Map -->
+		<property name="countries">
+			<map>
+				<entry key="zh" value="China"></entry>
+				<entry key="en" value="English"></entry>
+			</map>
+		</property>
+		
+		<property name="files">
+			<props>
+				<prop key="url">jdbc:mysql:xxx</prop>
+				<prop key="username">root</prop>
+			</props>
+		</property>
+		
+		<!-- 自建类型 
+			首先需要配置bean
+			然后再配置property
+		-->
+		<property name="address" ref="addr"></property>
+	</bean>
+
+	<!-- 构造注入 -->
+	<bean id="student" class="com.spring02.entity.Student">
+		<constructor-arg name="id" value="1" />
+		<constructor-arg name="name" value="shine" />
+		<constructor-arg name="sex" value="male" />
+		<constructor-arg name="age" value="19" />
+	</bean>
+	
+	<!-- 自动注入 -->
+	<!-- byType  byName -->
+	
+
+</beans>
+
+
+
+
+
+
+
+
+
+
