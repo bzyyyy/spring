@@ -1,6 +1,7 @@
 package com.spring01.test;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -42,5 +43,13 @@ public class SpringFactory {
 		System.out.println(user.getCountries());
 		System.out.println(user.getFiles());
 		System.out.println(user.getAddress().getId() + ":" + user.getAddress().getCity());
+	}
+	
+	@Test
+	public void testFactoryBean() {
+		// Æô¶¯¹¤³§
+		ApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
+		Connection conn = (Connection) context.getBean("conn");
+		System.out.println(conn);
 	}
 }

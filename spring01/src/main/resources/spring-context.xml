@@ -102,6 +102,16 @@
 	<!-- 自动注入 -->
 	<!-- byType  byName -->
 	
+	<!-- Connection
+		
+		SqlSessionFactory
+		复杂对象：创建过程复杂，并不是直接new出来的
+		FactoryBean
+	
+		当从工厂中索要一个bean时，如果是FactoryBean，实际返回的是工厂bean的getObject方法的返回值
+	 -->
+	 <bean id="conn" class="com.spring01.factorybean.MyConnectionFactoryBean"></bean>
+	
 
 </beans>
 
