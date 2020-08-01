@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	schema: 规范
+	xxx.xsd
+	xml schema defination
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+						
+	<!-- scope="prototype"  多例 -->
+	<!-- 构造方法  set方法  初始化  销毁方法 -->
+	<bean id="addr" class="com.spring02.entity.Address" init-method="init_qf" destroy-method="destroy_qf" scope="prototype">
+		<property name="id" value="1"></property>
+		<property name="city" value="bj"></property>
+	</bean>
+	
+
+</beans>
+
+
+
+
+
+
+
+
+
+
