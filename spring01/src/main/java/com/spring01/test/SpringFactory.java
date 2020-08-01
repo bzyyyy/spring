@@ -52,4 +52,17 @@ public class SpringFactory {
 		Connection conn = (Connection) context.getBean("conn");
 		System.out.println(conn);
 	}
+	
+	@Test
+	public void testLife() {
+		// 启动工厂
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context2.xml");
+		
+		context.getBean("addr");
+		context.getBean("addr");
+		
+		System.out.println("===============");
+		// 关闭工厂
+		context.close();
+	}
 }
